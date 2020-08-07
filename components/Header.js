@@ -40,7 +40,7 @@ function coolHeader(){
 
     return header
 
-};
+}
 
 
 const headerContainer = document.querySelector('.header-container');

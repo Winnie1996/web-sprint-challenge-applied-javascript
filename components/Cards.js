@@ -20,3 +20,65 @@
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
+
+
+
+
+
+
+
+
+
+
+// Location
+const cardHolder = document.querySelector('.cards-container')
+
+// Create Elements
+
+const cardMaker = function(data){
+const parentCard = document.createElement('div')
+const headline = document.createElement('div')
+const author = document.createElement('div')
+const imgContainer = document.createElement('div')
+const image = document.createElement('img')
+const name = document.createElement('span')
+
+// Add Classes
+parentCard.classList.add('card')
+headline.classList.add('headline')
+author.classList.add('author')
+imgContainer.classList.add('img-container')
+image.src = data.authorPhoto
+
+
+// Text Content
+  headline.textContent = data.headline;
+  name.textContent = data.authorName;
+
+
+//Append
+parentCard.appendChild(headline)
+parentCard.appendChild(author)
+author.appendChild(imgContainer)
+imgContainer.appendChild(image)
+author.appendChild(name)
+
+return parentCard
+
+};
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then(function(response){
+    const newArticles = Object.values(response.data.articles)
+
+    newArticles.forEach(function(item){
+        item.forEach(function(extraItems){
+            const newArticles = cardMaker(extraItems)
+            cardHolder.appendChild(newArticles)
+        })
+    })
+})
+
+.catch(function(error){
+    console.log(`WOOPS CARD ERROR BUD: ${error}`)
+})
