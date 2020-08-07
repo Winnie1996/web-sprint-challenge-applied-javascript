@@ -27,7 +27,7 @@ return tab
 
 };
 
-axios.get("https://lambda-times-backend.herokuapp.com/topics")
+axios.get("https://lambda-times-api.herokuapp.com/topics")
     .then(function(response){
         let newTopics = response.data.topics
         newTopics.forEach(function(item){
