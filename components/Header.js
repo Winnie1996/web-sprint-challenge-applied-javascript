@@ -38,9 +38,9 @@ function coolHeader(){
     header.appendChild(h1)
     header.appendChild(temp)
 
-    return header;
+    return header
 
-}
+};
 
 
 const headerContainer = document.querySelector('.header-container');
